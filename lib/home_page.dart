@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
       error = 'Erro na pesquisa';
     }
     setState(() {
-      isLoading = true;
+      isLoading = false;
     });
   }
 
@@ -74,11 +74,9 @@ class _HomePageState extends State<HomePage> {
             if (isLoading)
               Expanded(child: Center(child: CircularProgressIndicator())),
             if (error != null)
-              Text(error, style: TextStyle(color: Colors.black)),
+              Text(error, style: TextStyle(color: Colors.red)),
             if (!isLoading && cepResult.isNotEmpty)
-              Text("Cidade: ${cepResult['localidade']}"),
-              Text(cepResult['localidade'].toString()),
-              // Text('$cepResult[localidade]'),
+              Text("Endereço: ${cepResult['logradouro']} - ${cepResult['bairro']} - ${cepResult['localidade']} - ${cepResult['uf']}"),
           ],
         ),
       ),
