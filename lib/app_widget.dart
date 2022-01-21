@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:viacep/home_page.dart';
+import 'package:viacep/home/home_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({ Key key }) : super(key: key);
