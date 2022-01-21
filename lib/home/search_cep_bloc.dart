@@ -1,16 +1,12 @@
 import 'dart:async';
-
 import 'package:dio/dio.dart';
 
 class SearchCepBloc {
-  // ignore: close_sinks
-  final _streamController = StreamController<String>();
+  final _streamController = StreamController<String>.broadcast();
   Sink<String> get searchCep => _streamController.sink;
   Stream<Map> get cepResult => _streamController.stream.asyncMap(_searchCep);
 
   Future<Map> _searchCep(String cep) async {
-    print('MEU CEP');
-    print(cep);
     try {
       final response = await Dio().get('https://viacep.com.br/ws/$cep/json/');
 

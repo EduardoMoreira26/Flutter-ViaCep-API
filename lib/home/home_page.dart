@@ -58,6 +58,14 @@ class _HomePageState extends State<HomePage> {
                   return Container();
                 }
 
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Expanded(
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+
                 return Text(
                     "Endereço: ${snapshot?.data['logradouro']} - ${snapshot?.data['bairro']} - ${snapshot?.data['localidade']} - ${snapshot?.data['uf']}");
               },
