@@ -16,6 +16,8 @@ class _HomePageState extends State<HomePage> {
   var cepResult = {};
 
   Future<void> searchCep(String cep) async {
+    print('MEU CEP');
+    print(cep);
     try {
       cepResult = {};
       error = null;
@@ -24,6 +26,8 @@ class _HomePageState extends State<HomePage> {
       });
 
       final response = await Dio().get('https://viacep.com.br/ws/$cep/json/');
+      print('response');
+      print(response);
 
       setState(() {
         cepResult = response.data;
@@ -73,6 +77,8 @@ class _HomePageState extends State<HomePage> {
               Text(error, style: TextStyle(color: Colors.black)),
             if (!isLoading && cepResult.isNotEmpty)
               Text("Cidade: ${cepResult['localidade']}"),
+              Text(cepResult['localidade'].toString()),
+              // Text('$cepResult[localidade]'),
           ],
         ),
       ),
